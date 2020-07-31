@@ -26,7 +26,7 @@ export default function Header(props) {
 
     const {cartItems} = useSelector(state => state.cart);
 
-    const cartItemsLength = parseInt(cartItems.reduce((a, c) => a + c.qty, 0));
+    const cartItemsLength = cartItems.reduce((a, c) => parseInt(a) + parseInt(c.qty), 0);
 
     return (
         <>

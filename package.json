@@ -1,7 +1,7 @@
 {
-  "name": "amazona",
+  "name": "gkart",
   "version": "1.0.0",
-  "description": "Demo : https://amazonaapp.herokuapp.com/",
+  "description": "E-commerce Site",
   "main": "index.js",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
@@ -36,14 +36,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/basir/amazona.git"
+    "url": "git+https://github.com/Gokulnathb19/E-Commerce_MEAN_App.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/basir/amazona/issues"
+    "url": "https://github.com/Gokulnathb19/E-Commerce_MEAN_App/issues"
   },
-  "homepage": "https://github.com/basir/amazona#readme",
+  "homepage": "https://github.com/Gokulnathb19/E-Commerce_MEAN_App#readme",
   "engines": {
     "node": "12.4.0",
     "npm": "6.9.0"
