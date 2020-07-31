@@ -11,6 +11,7 @@ function CartScreen(props) {
 
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } = userSignin;
+  const { priceUnit } = useSelector((state) => state.appDetails);
 
   const productId = props.match.params.id;
   const qty = props.location.search ? Number(props.location.search.split("=")[1]) : 1;
@@ -79,7 +80,7 @@ function CartScreen(props) {
                       </div>
                     </div>
                     <div className="cart-price">
-                      ${item.price}
+                          {priceUnit}{item.price}
                     </div>
                   </li>
                 )
@@ -91,7 +92,7 @@ function CartScreen(props) {
           <h3>
             Subtotal ( {parseInt(cartItems.reduce((a, c) => a + c.qty, 0))} items)
             :
-            $ {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+            {priceUnit} {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
           </h3>
           <button onClick={checkoutHandler} className="button primary full-width" disabled={cartItems.length === 0}>
             Proceed to Checkout

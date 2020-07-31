@@ -17,6 +17,7 @@ function ProductScreen(props) {
   const { product, loading, error } = productDetails;
   const productReviewSave = useSelector((state) => state.productReviewSave);
   const { success: productSaveSuccess } = productReviewSave;
+  const { priceUnit } = useSelector((state) => state.appDetails);
   const dispatch = useDispatch();
   let isReviewRated = false;
 
@@ -82,7 +83,7 @@ function ProductScreen(props) {
                   </a>
                 </li>
                 <li>
-                  Price: <b>${product.price}</b>
+                  Price: <b>{priceUnit}{product.price}</b>
                 </li>
                 <li>
                   Description:
@@ -92,7 +93,7 @@ function ProductScreen(props) {
             </div>
             <div className="details-action">
               <ul>
-                <li>Price: ${product.price}</li>
+                <li>Price: {priceUnit}{product.price}</li>
                 <li>
                   Status:{' '}
                   {product.countInStock > 0 ? <span style={{color: "green"}}>{'In Stock'}</span> : <span style={{color: "red"}}>{'Unavailable'}</span>}

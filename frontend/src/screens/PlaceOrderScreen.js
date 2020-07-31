@@ -8,6 +8,7 @@ function PlaceOrderScreen(props) {
   const cart = useSelector(state => state.cart);
   const orderCreate = useSelector(state => state.orderCreate);
   const { success, order } = orderCreate;
+  const { priceUnit } = useSelector((state) => state.appDetails);
 
   const { cartItems, shipping, payment } = cart;
   if (!shipping.address) {
@@ -88,7 +89,7 @@ function PlaceOrderScreen(props) {
                       </div>
                     </div>
                     <div className="cart-price">
-                      ${item.price}
+                      {priceUnit}{item.price}
                     </div>
                   </li>
                 )
@@ -108,19 +109,19 @@ function PlaceOrderScreen(props) {
           </li>
           <li>
             <div>Items</div>
-            <div>${itemsPrice}</div>
+            <div>{priceUnit}{itemsPrice}</div>
           </li>
           <li>
             <div>Shipping</div>
-            <div>${shippingPrice}</div>
+            <div>{priceUnit}{shippingPrice}</div>
           </li>
           <li>
             <div>Tax</div>
-            <div>${taxPrice}</div>
+            <div>{priceUnit}{taxPrice}</div>
           </li>
           <li>
             <div>Order Total</div>
-            <div>${totalPrice}</div>
+            <div>{priceUnit}{totalPrice}</div>
           </li>
         </ul>
 

@@ -19,16 +19,12 @@ import Header from './components/Header';
 import Loader from './components/Loader';
 
 function App() {
-  const userSignin = useSelector((state) => state.userSignin);
-  const { userInfo } = userSignin;
   const currentYear = new Date().getFullYear();
-  const AppName = "GKart";
-
   return (
     <BrowserRouter>
       <div className="grid-container">
-        <Header userInfo={userInfo} AppName={AppName}/>
-        <Loader />
+        <Header/>
+        <Loader/>
         <main className="main">
           <div className="content">
             <Route path="/orders" component={OrdersScreen} />
@@ -38,9 +34,7 @@ function App() {
             <Route path="/shipping" component={ShippingScreen} />
             <Route path="/payment" component={PaymentScreen} />
             <Route path="/placeorder" component={PlaceOrderScreen} />
-            <Route path="/signin" render={(routerProps) => (
-              <SigninScreen AppName={AppName} {...routerProps}/>
-            )} />
+            <Route path="/signin" component={SigninScreen} />
             <Route path="/register" component={RegisterScreen} />
             <Route path="/product/:id" component={ProductScreen} />
             <Route path="/cart/:id?" component={CartScreen} />

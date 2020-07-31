@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import Cookie from 'js-cookie';
+import { appReducer } from './reducers/appReducers';
 import {
   categoryListReducer,
   productListReducer,
@@ -30,8 +31,10 @@ const userInfo = Cookie.getJSON('userInfo') || null;
 const initialState = {
   cart: { cartItems, shipping: {}, payment: {} },
   userSignin: { userInfo },
+  appDetails: { appName: 'GKart', priceUnit: '₹' },
 };
 const reducer = combineReducers({
+  appDetails: appReducer,
   categoryList: categoryListReducer,
   productList: productListReducer,
   productDetails: productDetailsReducer,

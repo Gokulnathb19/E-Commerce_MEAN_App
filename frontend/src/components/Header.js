@@ -7,9 +7,9 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import CategoriesScreen from './../screens/CategoriesScreen'
 
 export default function Header(props) {
-    const userInfo = props.userInfo;
-    const AppName = props.AppName;
     const [isSideNavOpened, setIsSideNavOpened] = useState(false);
+    const { userInfo } = useSelector((state) => state.userSignin);
+    const { appName } = useSelector((state) => state.appDetails);
 
     const dispatch = useDispatch();
     const handleLogout = () => {
@@ -33,7 +33,7 @@ export default function Header(props) {
             <header className="header">
             <div className="brand">
                 <button onClick={openMenu}>&#9776;</button>
-                <Link to="/">{AppName}</Link>
+                <Link to="/">{appName}</Link>
             </div>
             <div className="header-links">
             <Link to="/cart"><span><sub style={{backgroundColor: "white", color: "dodgerblue", padding: "2px 4px",borderRadius: "50%", border: "0.1rem solid dodgerblue"}}>{cartItemsLength}</sub></span><FontAwesomeIcon icon={faShoppingCart} /></Link>

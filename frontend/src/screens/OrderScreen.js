@@ -7,6 +7,7 @@ function OrderScreen(props) {
 
   const orderPay = useSelector(state => state.orderPay);
   const { loading: loadingPay, success: successPay, error: errorPay } = orderPay;
+  const { priceUnit } = useSelector((state) => state.appDetails);
   const dispatch = useDispatch();
   useEffect(() => {
     if (successPay) {
@@ -84,7 +85,7 @@ function OrderScreen(props) {
                         </div>
                       </div>
                       <div className="cart-price">
-                        ${item.price}
+                        {priceUnit}{item.price}
                       </div>
                     </li>
                   )
@@ -109,19 +110,19 @@ function OrderScreen(props) {
             </li>
             <li>
               <div>Items</div>
-              <div>${order.itemsPrice}</div>
+              <div>{priceUnit}{order.itemsPrice}</div>
             </li>
             <li>
               <div>Shipping</div>
-              <div>${order.shippingPrice}</div>
+              <div>{priceUnit}{order.shippingPrice}</div>
             </li>
             <li>
               <div>Tax</div>
-              <div>${order.taxPrice}</div>
+              <div>{priceUnit}{order.taxPrice}</div>
             </li>
             <li>
               <div>Order Total</div>
-              <div>${order.totalPrice}</div>
+              <div>{priceUnit}{order.totalPrice}</div>
             </li>
           </ul>
 

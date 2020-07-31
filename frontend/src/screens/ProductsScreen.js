@@ -25,6 +25,8 @@ function ProductsScreen(props) {
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } = userSignin;
 
+  const { priceUnit } = useSelector((state) => state.appDetails);
+
   const categories = products.map(product => {
       return product.category
   }).filter((value, index, self) => { 
@@ -149,7 +151,7 @@ function ProductsScreen(props) {
                     ></input>
                   </li>
                   <li>
-                    <label htmlFor="price">Price</label>
+                    <label htmlFor="price">Price({priceUnit})</label>
                     <input
                       type="text"
                       name="price"
@@ -255,7 +257,7 @@ function ProductsScreen(props) {
                 <tr key={product._id}>
                   <td>{product._id}</td>
                   <td>{product.name}</td>
-                  <td>{product.price}</td>
+                  <td>{priceUnit}{product.price}</td>
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
                   <td>

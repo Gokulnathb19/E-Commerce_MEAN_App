@@ -11,6 +11,7 @@ function HomeScreen(props) {
   const category = props.match.params.id ? props.match.params.id : '';
   const productList = useSelector((state) => state.productList);
   const { products, loading, error } = productList;
+  const { priceUnit } = useSelector((state) => state.appDetails);
   const dispatch = useDispatch();
   const productNameMaxLength = 65;
   useEffect(() => {
@@ -75,7 +76,7 @@ function HomeScreen(props) {
                 </div>
                 <div className="product-brand-price">
                   <div className="product-brand">{product.brand}</div>
-                  <div className="product-price">${product.price}</div>
+                  <div className="product-price">{priceUnit}{product.price}</div>
                 </div>
                 <div className="product-rating">
                   <Rating
