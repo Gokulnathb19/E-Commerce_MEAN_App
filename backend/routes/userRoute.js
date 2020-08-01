@@ -55,7 +55,7 @@ router.post('/register', async (req, res) => {
       name: newUser.name,
       email: newUser.email,
       isAdmin: newUser.isAdmin,
-      token: getToken(newUser),
+      token: getToken(newUser, '2m'),
     });
   } else {
     res.status(401).send({ message: 'Invalid User Data.' });

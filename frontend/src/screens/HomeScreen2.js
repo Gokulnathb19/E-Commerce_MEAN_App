@@ -42,6 +42,8 @@ function HomeScreen(props) {
     dispatch(listProducts(category, searchKeyword, orderOfSort));
   };
 
+  let count = 0;
+
   return (
     <>
       <ul style={{padding: "0.2rem"}} className="filter">
@@ -75,8 +77,9 @@ function HomeScreen(props) {
                 <ul className="products">
                 {products.map((product, pIdx) => (
                     <React.Fragment key={pIdx}>
-                    {product.category === c && (
+                    {(product.category === c) && (
                         <li key={product._id}>
+                          {count++ ? "" : ""}
                             <div className="product">
                                 <Link to={'/product/' + product._id}>
                                     <img
@@ -103,6 +106,8 @@ function HomeScreen(props) {
                     )}
                     </React.Fragment>
                 ))}
+                {count === 0 ? <h6>No Products related to your search found in this category {c}</h6> : ""}
+                {(count = 0) ? "" : ""}
                 </ul>
             )}
           </React.Fragment>

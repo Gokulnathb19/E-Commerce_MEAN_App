@@ -55,19 +55,19 @@ function ProfileScreen(props) {
               <label htmlFor="name">
                 Name
           </label>
-              <input value={name} type="name" name="name" id="name" onChange={(e) => setName(e.target.value)}>
+              <input value={name} type="name" name="name" id="name" required onChange={(e) => setName(e.target.value)}>
               </input>
             </li>
             <li>
               <label htmlFor="email">
                 Email
           </label>
-              <input value={email} type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
+              <input value={email} type="email" name="email" id="email" required onChange={(e) => setEmail(e.target.value)}>
               </input>
             </li>
             <li>
               <label htmlFor="password">Password</label>
-              <input value={password} type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}>
+              <input value={password} type="password" id="password" name="password" required onChange={(e) => setPassword(e.target.value)}>
               </input>
             </li>
 

@@ -3,7 +3,7 @@ import Cookie from 'js-cookie';
 import {
   USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS,
   USER_SIGNIN_FAIL, USER_REGISTER_REQUEST,
-  USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_LOGOUT, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS, USER_UPDATE_FAIL
+  USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_LOGOUT, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS, USER_UPDATE_FAIL, USER_REGISTER_FINISH
 } from "../constants/userConstants";
 
 const update = ({ userId, name, email, password }) => async (dispatch, getState) => {
@@ -49,4 +49,8 @@ const logout = () => (dispatch) => {
   Cookie.remove("userInfo");
   dispatch({ type: USER_LOGOUT })
 }
-export { signin, register, logout, update };
+const registerFinished = () => (dispatch) => {
+  Cookie.remove("userInfo");
+  dispatch({ type: USER_REGISTER_FINISH })
+}
+export { signin, register, logout, registerFinished, update };

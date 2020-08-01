@@ -11,7 +11,7 @@ function SigninScreen(props) {
   const { loading, userInfo, error } = userSignin;
   const dispatch = useDispatch();
   const redirect = props.location.search ? props.location.search.split("=")[1] : '/';
-  console.log('redirect:',redirect)
+  const newUserRegistered = props.location.state !== undefined ? props.location.state.success !== undefined ? true : false : false;
   const { appName } = useSelector((state) => state.appDetails);
   useEffect(() => {
     if (userInfo) {
@@ -32,9 +32,8 @@ function SigninScreen(props) {
       <ul className="form-container">
         <li>
           <h2>Sign-In</h2>
-        </li>
-        <li>
           {loading && <div>Loading...</div>}
+          {newUserRegistered && <h4 style={{color: "green"}}>{'Successfully created your'} {<span style={{color: "dodgerblue"}}>{appName}</span>} {'account. Sign-In to continue.'}</h4>}
           {error && <div style={{color: "red"}}>{error === "Request failed with status code 401" ? "Invalid username or password" : error}</div>}
         </li>
         <li>

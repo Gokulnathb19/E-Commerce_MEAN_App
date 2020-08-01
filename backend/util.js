@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import config from './config';
-const getToken = (user) => {
+const getToken = (user, expiresIn = '48h') => {
   return jwt.sign(
     {
       _id: user._id,
@@ -10,7 +10,7 @@ const getToken = (user) => {
     },
     config.JWT_SECRET,
     {
-      expiresIn: '48h',
+      expiresIn: expiresIn,
     }
   );
 };

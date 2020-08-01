@@ -10,6 +10,7 @@ function ProductScreen(props) {
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
+  const [ratingError, setRatingError] = useState(null);
   const [isModalDisplay, setIsModalDisplay] = useState(false);
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -33,8 +34,13 @@ function ProductScreen(props) {
       //
     };
   }, [productSaveSuccess]);
+  
   const submitHandler = (e) => {
     e.preventDefault();
+    if(rating === 0) {
+      setRatingError('Please provide the rating');
+      return false;
+    }
     // dispatch actions
     dispatch(
       saveProductReview(props.match.params.id, {
@@ -44,6 +50,7 @@ function ProductScreen(props) {
         comment: comment,
       })
     );
+    setRatingError(null);
     setIsModalDisplay(false);
   };
   const handleAddToCart = () => {
@@ -160,12 +167,16 @@ function ProductScreen(props) {
                                 value={rating}
                                 onChange={(e) => setRating(e.target.value)}
                               >
+                                <option value="0">Rating</option>
                                 <option value="1">1- Poor</option>
                                 <option value="2">2- Fair</option>
                                 <option value="3">3- Good</option>
                                 <option value="4">4- Very Good</option>
                                 <option value="5">5- Excelent</option>
                               </select>
+                              {ratingError && (
+                                <span style={{color: "red"}}>{ratingError}</span>
+                              )}
                             </li>
                             <li>
                               <label htmlFor="comment">Comment</label>
