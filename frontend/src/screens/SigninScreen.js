@@ -15,7 +15,7 @@ function SigninScreen(props) {
   const { appName } = useSelector((state) => state.appDetails);
   useEffect(() => {
     if (userInfo) {
-      props.history.push(redirect);
+      props.history.replace(redirect);
     }
     return () => {
       //

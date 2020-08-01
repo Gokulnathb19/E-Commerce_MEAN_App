@@ -17,7 +17,7 @@ function OrdersScreen(props) {
 
   useEffect(() => {
     if(!userInfo)
-      props.history.push("/signin?redirect=orders");
+      props.history.replace("/signin?redirect=orders");
   }, [userInfo])
   
   useEffect(() => {
@@ -38,7 +38,7 @@ function OrdersScreen(props) {
         <div className="order-header">
           <h3>Orders</h3>
         </div>
-        <div className="order-list">
+        <div className="order-list table-responsive">
 
           <table className="table">
             <thead>

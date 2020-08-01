@@ -278,6 +278,10 @@ a > .rating > span:last-child {
 .button.secondary {
   background-color: #f0f0f0;
 }
+.button.disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
 .text-center {
   text-align: center;
 }
@@ -406,7 +410,7 @@ input:focus, select:focus, textarea:focus {
   justify-content: space-between;
   align-items: flex-start;
 }
-.product-list {
+.table-responsive {
   display: block;
   width: 100%;
   overflow-x: auto;
@@ -519,6 +523,7 @@ tbody > tr:nth-child(odd) {
   flex: 1 1 30rem;
 }
 .profile-orders {
+  
   flex: 3 1 60rem;
 }
 

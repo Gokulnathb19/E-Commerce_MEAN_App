@@ -82,7 +82,7 @@ function ProfileScreen(props) {
         </form>
       </div>
     </div>
-    <div className="profile-orders content-margined">
+    <div className="profile-orders content-margined table-responsive">
       {
         loadingOrders ? <div>Loading...</div> :
           errorOrders ? <div>{errorOrders} </div> :

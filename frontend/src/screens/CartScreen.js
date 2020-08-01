@@ -18,11 +18,21 @@ function CartScreen(props) {
   const dispatch = useDispatch();
   const removeFromCartHandler = (productId) => {
     dispatch(removeFromCart(productId));
+    /*console.log(props.history)
+    if(props.history.location.pathname.indexOf('cart/') == 1) {
+      const state = { ...history.location.state };
+      delete state.deleted;
+      history.replace({ ...history.location, state });
+    }*/
   }
 
   useEffect(() => {
     if(!userInfo)
-      props.history.push("/signin?redirect=cart");
+      props.history.replace("/signin?redirect=cart");
+    else {
+      if(props.history.location.pathname.indexOf('cart/') == 1)
+        props.history.replace('/cart');
+    }
   }, [userInfo])
 
   useEffect(() => {
@@ -32,7 +42,7 @@ function CartScreen(props) {
   }, []);
 
   const checkoutHandler = () => {
-    props.history.push("/signin?redirect=shipping");
+    props.history.replace("/signin?redirect=shipping");
   }
 
   return (
@@ -55,8 +65,8 @@ function CartScreen(props) {
                   Cart is empty
               </div>
                 :
-                cartItems.map(item =>
-                  <li>
+                cartItems.map((item, idx) =>
+                  <li key={idx}>
                     <div className="cart-image">
                       <img src={item.image} alt="product" />
                     </div>
@@ -86,6 +96,7 @@ function CartScreen(props) {
                 )
             }
           </ul>
+          <Link to="/"><button className="button primary">{cartItems.length === 0 ? "Add Items" : "Add More Items"}{" ->"}</button></Link>
     
         </div>
         <div className="cart-action">
@@ -94,7 +105,7 @@ function CartScreen(props) {
             :
             {priceUnit} {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
           </h3>
-          <button onClick={checkoutHandler} className="button primary full-width" disabled={cartItems.length === 0}>
+          <button onClick={checkoutHandler} className={`button primary full-width ${cartItems.length === 0 ? "disabled" : ""}`} disabled={cartItems.length === 0}>
             Proceed to Checkout
           </button>
     

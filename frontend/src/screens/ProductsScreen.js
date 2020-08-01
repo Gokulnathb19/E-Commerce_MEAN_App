@@ -50,7 +50,7 @@ function ProductsScreen(props) {
 
   useEffect(() => {
     if(!userInfo)
-      props.history.push("/signin?redirect=products");
+      props.history.replace("/signin?redirect=products");
   }, [userInfo])
 
   useEffect(() => {
@@ -240,7 +240,7 @@ function ProductsScreen(props) {
           </Modal>
         )}
 
-        <div className="product-list">
+        <div className="product-list table-responsive">
           <table className="table">
             <thead>
               <tr>

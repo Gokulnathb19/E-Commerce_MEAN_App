@@ -5,7 +5,7 @@ const reviewSchema = new mongoose.Schema(
     reviewerId: { type: String, required: true },
     name: { type: String, required: true },
     rating: { type: Number, default: 0 },
-    comment: { type: String, required: true },
+    comment: { type: String, default: '' },
   },
   {
     timestamps: true,
