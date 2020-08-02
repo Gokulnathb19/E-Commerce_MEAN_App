@@ -25,7 +25,7 @@ function ProductsScreen(props) {
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } = userSignin;
 
-  const { priceUnit } = useSelector((state) => state.appDetails);
+  const { currency: {unit: priceUnit} } = useSelector((state) => state.appDetails);
 
   const categories = products.map(product => {
       return product.category

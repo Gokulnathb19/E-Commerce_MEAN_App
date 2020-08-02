@@ -25,12 +25,12 @@ function ProfileScreen(props) {
 
   const myOrderList = useSelector(state => state.myOrderList);
   const { loading: loadingOrders, orders, error: errorOrders } = myOrderList;
+  const { currency: {unit: priceUnit} } = useSelector((state) => state.appDetails);
   useEffect(() => {
     if (userInfo) {
-      console.log(userInfo.name)
       setEmail(userInfo.email);
       setName(userInfo.name);
-      setPassword(userInfo.password);
+      setPassword(userInfo.password ? userInfo.password : "");
     }
     dispatch(listMyOrders());
     return () => {
@@ -41,7 +41,7 @@ function ProfileScreen(props) {
   return <div className="profile">
     <div className="profile-info">
       <div className="form">
-        <form autocomplete="off" onSubmit={submitHandler} >
+        <form autoComplete="off" onSubmit={submitHandler} >
           <ul className="form-container">
             <li>
               <h2>User Profile</h2>
@@ -100,7 +100,7 @@ function ProfileScreen(props) {
                 {orders.map(order => <tr key={order._id}>
                   <td>{order._id}</td>
                   <td>{order.createdAt}</td>
-                  <td>{order.totalPrice}</td>
+                  <td>{priceUnit}{order.totalPrice}</td>
                   <td>{order.isPaid}</td>
                   <td>
                     <Link to={"/order/" + order._id}>DETAILS</Link>

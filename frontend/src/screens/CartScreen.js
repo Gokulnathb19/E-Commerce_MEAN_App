@@ -11,7 +11,7 @@ function CartScreen(props) {
 
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } = userSignin;
-  const { priceUnit } = useSelector((state) => state.appDetails);
+  const { currency: {unit: priceUnit} } = useSelector((state) => state.appDetails);
 
   const productId = props.match.params.id;
   const qty = props.location.search ? Number(props.location.search.split("=")[1]) : 1;

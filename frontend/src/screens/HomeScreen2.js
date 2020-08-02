@@ -13,7 +13,7 @@ function HomeScreen(props) {
   const productList = useSelector((state) => state.productList);
   const categoriesList = useSelector((state) => state.categoryList);
   const { products, loading, error } = productList;
-  const { priceUnit } = useSelector((state) => state.appDetails);
+  const { currency: {unit: priceUnit} } = useSelector((state) => state.appDetails);
   let categories;
   if(!category) {
     categories = [...categoriesList.categories];

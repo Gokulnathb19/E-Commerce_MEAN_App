@@ -7,7 +7,7 @@ function OrderScreen(props) {
 
   const orderPay = useSelector(state => state.orderPay);
   const { loading: loadingPay, success: successPay, error: errorPay } = orderPay;
-  const { priceUnit } = useSelector((state) => state.appDetails);
+  const { currency: {unit: priceUnit} } = useSelector((state) => state.appDetails);
   const dispatch = useDispatch();
   useEffect(() => {
     if (successPay) {

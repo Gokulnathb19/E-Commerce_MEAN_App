@@ -11,7 +11,7 @@ function HomeScreen(props) {
   const category = props.match.params.id ? props.match.params.id : '';
   const productList = useSelector((state) => state.productList);
   const { products, loading, error } = productList;
-  const { priceUnit } = useSelector((state) => state.appDetails);
+  const { currency: {unit: priceUnit} } = useSelector((state) => state.appDetails);
   const dispatch = useDispatch();
   const productNameMaxLength = 65;
   useEffect(() => {

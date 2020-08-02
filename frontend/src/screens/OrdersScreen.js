@@ -13,6 +13,8 @@ function OrdersScreen(props) {
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } = userSignin;
 
+  const { currency: {unit: priceUnit} } = useSelector((state) => state.appDetails);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -58,7 +60,7 @@ function OrdersScreen(props) {
               {orders.map(order => (<tr key={order._id}>
                 <td>{order._id}</td>
                 <td>{order.createdAt}</td>
-                <td>{order.totalPrice}</td>
+                <td>{priceUnit}{order.totalPrice}</td>
                 <td>{order.user.name}</td>
                 <td>{order.isPaid.toString()}</td>
                 <td>{order.paidAt}</td>

@@ -18,7 +18,7 @@ function ProductScreen(props) {
   const { product, loading, error } = productDetails;
   const productReviewSave = useSelector((state) => state.productReviewSave);
   const { success: productSaveSuccess } = productReviewSave;
-  const { priceUnit } = useSelector((state) => state.appDetails);
+  const { currency: {unit: priceUnit} } = useSelector((state) => state.appDetails);
   const dispatch = useDispatch();
   let isReviewRated = false;
 

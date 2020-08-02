@@ -39,8 +39,11 @@ export default function Header(props) {
             <Link to="/cart"><span><sub style={{backgroundColor: "white", color: "dodgerblue", padding: "2px 4px",borderRadius: "50%", border: "0.1rem solid dodgerblue", fontWeight: "bold"}}>{cartItemsLength}</sub></span><FontAwesomeIcon icon={faShoppingCart} /></Link>
                 {userInfo ? (
                 <div className="dropdown">
-                    <Link to="/profile">{userInfo.name}</Link>
+                    <Link to={props.history.location}>{userInfo.name}</Link>
                     <ul className="dropdown-content">
+                        <li>
+                            <Link to="/profile">My Account</Link>
+                        </li>
                         {userInfo && userInfo.isAdmin && (
                             <>
                                 <li>

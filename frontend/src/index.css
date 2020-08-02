@@ -542,6 +542,8 @@ tbody > tr:nth-child(odd) {
   background-color: #203040;
   margin: 0;
   margin-top: 0.4rem;
+  width: 100%;
+  text-align: center;
 }
 .dropdown:hover .dropdown-content {
   display: block;

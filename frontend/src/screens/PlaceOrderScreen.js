@@ -8,7 +8,7 @@ function PlaceOrderScreen(props) {
   const cart = useSelector(state => state.cart);
   const orderCreate = useSelector(state => state.orderCreate);
   const { success, order } = orderCreate;
-  const { priceUnit } = useSelector((state) => state.appDetails);
+  const { currency: {unit: priceUnit} } = useSelector((state) => state.appDetails);
 
   const { cartItems, shipping, payment } = cart;
   if (!shipping.address) {

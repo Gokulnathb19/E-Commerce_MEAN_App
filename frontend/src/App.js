@@ -1,12 +1,11 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, withRouter } from 'react-router-dom';
 import './App.css';
 import HomeScreen from './screens/HomeScreen';
 import HomeScreen2 from './screens/HomeScreen2';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 import SigninScreen from './screens/SigninScreen';
-import { useSelector } from 'react-redux';
 import RegisterScreen from './screens/RegisterScreen';
 import ProductsScreen from './screens/ProductsScreen';
 import ShippingScreen from './screens/ShippingScreen';
@@ -17,13 +16,14 @@ import ProfileScreen from './screens/ProfileScreen';
 import OrdersScreen from './screens/OrdersScreen';
 import Header from './components/Header';
 import Loader from './components/Loader';
+import Footer from './components/Footer';
 
 function App() {
-  const currentYear = new Date().getFullYear();
+  const HeaderComponent = withRouter( props => <Header {...props}/>)
   return (
     <BrowserRouter>
       <div className="grid-container">
-        <Header/>
+        <HeaderComponent/>
         <Loader/>
         <main className="main">
           <div className="content">
@@ -40,11 +40,11 @@ function App() {
             <Route path="/cart/:id?" component={CartScreen} />
             <Route path="/category/:id" component={HomeScreen2} />
             <Route path="/" exact={true} component={HomeScreen2} />
-            <Route path="/category/:id/2" component={HomeScreen} />
+            <Route path="/category2/:id" component={HomeScreen} />
             <Route path="/2" exact={true} component={HomeScreen} />
           </div>
         </main>
-            <footer className="footer">&copy; {currentYear} All right reserved.</footer>
+        <Footer/>
       </div>
     </BrowserRouter>
   );

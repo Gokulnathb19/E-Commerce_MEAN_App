@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import {useSelector} from 'react-redux';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 function PaypalButton(props) {
   const [sdkReady, setSdkReady] = useState(false);
+  const { currency: {code: currencyCode} } = useSelector((state) => state.appDetails);
 
   const addPaypalSdk = async () => {
     const result = await axios.get("/api/config/paypal");
@@ -21,7 +23,7 @@ function PaypalButton(props) {
     purchase_units: [
       {
         amount: {
-          currency_code: 'USD',
+          currency_code: currencyCode,
           value: props.amount
         }
       }

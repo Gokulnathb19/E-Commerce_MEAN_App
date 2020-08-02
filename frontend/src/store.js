@@ -31,7 +31,7 @@ const userInfo = Cookie.getJSON('userInfo') || null;
 const initialState = {
   cart: { cartItems, shipping: {}, payment: {} },
   userSignin: { userInfo },
-  appDetails: { appName: 'GKart', priceUnit: '₹' },
+  appDetails: { appName: 'GKart', currency: {unit: '₹', code: 'IN'}, author: {authorName: 'Gokulnath B', authorLink: 'http://gokulnathb.dx.am'} },
 };
 const reducer = combineReducers({
   appDetails: appReducer,
