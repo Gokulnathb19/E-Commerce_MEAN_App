@@ -32,13 +32,16 @@ function ProfileScreen(props) {
       setName(userInfo.name);
       setPassword(userInfo.password ? userInfo.password : "");
     }
+    else {
+      props.history.replace("/signin?redirect=profile");
+    }
     dispatch(listMyOrders());
     return () => {
 
     };
   }, [userInfo])
 
-  return <div className="profile">
+  return userInfo && <div className="profile">
     <div className="profile-info">
       <div className="form">
         <form autoComplete="off" onSubmit={submitHandler} >

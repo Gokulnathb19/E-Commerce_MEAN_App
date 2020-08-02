@@ -38,7 +38,7 @@ button::-moz-focus-inner, a::-moz-focus-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 2;
+  z-index: 102;
 }
 .brand a {
   color: #ffffff;
@@ -193,7 +193,7 @@ a > .rating > span:last-child {
   width: 30rem;
   background-color: #f0f0f0;
   height: 100%;
-  z-index: 2;
+  z-index: 102;
 }
 .sidebar.open {
   transform: translateX(0);
