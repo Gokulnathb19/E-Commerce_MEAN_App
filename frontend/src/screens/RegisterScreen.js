@@ -39,7 +39,7 @@ function RegisterScreen(props) {
       vError = error;
       vHasError = true;
     };
-    if(name.length !== 3) {
+    if(name.length < 3) {
       setVError({...vError, name: 'Name must be minimum 3 characters'})
     }
     if(!/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)) {
